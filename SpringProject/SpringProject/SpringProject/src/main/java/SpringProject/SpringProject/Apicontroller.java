@@ -40,7 +40,7 @@ public class Apicontroller {
     
     private List<DataModel> dataList = new ArrayList<>();
     public Apicontroller() {
-        
+        //To get List of Add data 
     }
 
     // READ method
