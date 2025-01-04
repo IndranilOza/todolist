@@ -1,16 +1,6 @@
 package SpringProject.SpringProject;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-//@RestController
-//public class Apicontroller {
-//	@GetMapping(value="/")
-//	public String getpage() {
-//		return "Welcome";
-//	}
-//
-//}
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
