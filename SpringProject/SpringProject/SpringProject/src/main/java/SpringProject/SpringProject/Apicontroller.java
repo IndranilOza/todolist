@@ -35,5 +35,11 @@ public class ApiController {
     public List<Users> getAllData() {
     	 return repository.findAll();
     }
+
+    @GetMapping("/data/{id}")
+    public Users FetchById(@PathVariable long id){
+    	 Users data= repository.findById(id).get();
+		return data ;
+    }
   
 }
