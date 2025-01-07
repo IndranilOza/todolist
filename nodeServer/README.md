@@ -39,3 +39,11 @@ project-root/
 ├── .gitignore # Files to ignore in git
 ├── package.json # Dependencies and scripts
 └── README.md # Documentation
+
+{
+"userId": "2",
+"taskName": "Task 1",
+"taskSDetails": "Task description",
+"time": "Task time",
+"activeStatus":true",
+}
