@@ -21,7 +21,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
     },
-    { timestamps: true }
+    {
+      timestamps: true, // Automatically adds createdAt and updatedAt fields
+      tableName: "users", // Explicit table name for consistency
+    }
   );
+
   return User;
 };
