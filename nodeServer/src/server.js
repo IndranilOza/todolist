@@ -1,5 +1,5 @@
 const app = require("./app");
-const { mysqlPool } = require("./config/db");
+const { pgPool } = require("./config/db");
 
 const PORT = process.env.PORT || 3000;
 

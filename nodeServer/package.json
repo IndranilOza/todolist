@@ -20,7 +20,8 @@
     "helmet": "^8.0.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.3",
-    "nodeserver": "file:"
+    "nodeserver": "file:",
+    "pg": "^8.13.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"

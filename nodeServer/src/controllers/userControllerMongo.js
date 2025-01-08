@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const User = require("../models/userModel"); // For MongoDB User model
+const User = require("../models/userModelMongo"); // For MongoDB User model
+const { pgPool } = require("../config/db");
 
 // User registration
 exports.registerUser = async (req, res) => {
@@ -44,9 +45,13 @@ exports.loginUser = async (req, res) => {
     }
 
     // Generate JWT
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
+    const token = jwt.sign(
+      { id: user?._id, name: user?.name || "NA", email: user?.email || "NA" },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1h",
+      }
+    );
 
     res.status(200).json({ message: "Login successful", token });
   } catch (error) {

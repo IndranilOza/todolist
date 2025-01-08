@@ -1,0 +1,19 @@
+endpoint(post) - /api/users/login 
+req = {
+    "email":"user email",
+    "password":"user password",
+}
+res = {
+    "message": "Login successful",
+    "token": "JWT token",
+}
+
+endpoint(post) - /api/users/register
+req = {
+    "name":"user name",
+    "email":"user email",
+    "password":"Pallab"
+}
+res = {
+    "message": "User registered successfully"
+}

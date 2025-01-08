@@ -1,31 +1,29 @@
 const mongoose = require("mongoose");
-const mysql = require("mysql2/promise");
+const { Pool } = require("pg");
 require("dotenv").config();
 
 // MongoDB connection
 async function connectMongo() {
   try {
-    await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(process.env.MONGO_URI); // Connection without deprecated options
     console.log("Connected to MongoDB");
   } catch (err) {
     console.error("MongoDB connection error:", err);
   }
 }
 
-// MySQL connection pool
-const mysqlPool = mysql.createPool({
-  host: process.env.MYSQL_HOST,
-  user: process.env.MYSQL_USER,
-  password: process.env.MYSQL_PASSWORD,
-  database: process.env.MYSQL_DATABASE,
+// PostgreSQL connection pool
+const pgPool = new Pool({
+  host: process.env.PGSQL_HOST,
+  user: process.env.PGSQL_USER,
+  password: process.env.PGSQL_PASSWORD,
+  database: process.env.PGSQL_DATABASE,
+  port: process.env.PGSQL_PORT || 5432, // Default PostgreSQL port
 });
 
-mysqlPool
-  .getConnection()
-  .then(() => console.log("Connected to MySQL"))
-  .catch((err) => console.error("MySQL connection error:", err));
+pgPool
+  .connect()
+  .then(() => console.log("Connected to PostgreSQL"))
+  .catch((err) => console.error("PostgreSQL connection error:", err));
 
-module.exports = { connectMongo, mysqlPool };
+module.exports = { connectMongo, pgPool };
