@@ -21,9 +21,9 @@ const pgPool = new Pool({
   port: process.env.PGSQL_PORT || 5432, // Default PostgreSQL port
 });
 
-pgPool
-  .connect()
-  .then(() => console.log("Connected to PostgreSQL"))
-  .catch((err) => console.error("PostgreSQL connection error:", err));
+// pgPool
+//   .connect()
+//   .then(() => console.log("Connected to PostgreSQL"))
+//   .catch((err) => console.error("PostgreSQL connection error:", err));
 
 module.exports = { connectMongo, pgPool };

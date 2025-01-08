@@ -1,0 +1,39 @@
+src/
+├── assets/                # Images, fonts, styles, etc.
+│   ├── images/
+│   ├── fonts/
+│   └── styles/
+│       ├── global.css
+│       └── variables.css
+├── components/            # Reusable UI components
+│   ├── Button/
+│   │   └── Button.jsx
+│   ├── InputField/
+│   │   └── InputField.jsx
+│   └── Navbar/
+│       └── Navbar.jsx
+├── features/              # Redux slices and async logic for different features
+│   ├── auth/
+│   │   ├── authSlice.js   # Redux slice for authentication
+│   │   ├── authThunks.js  # Async actions (e.g., login, register)
+│   │   └── authService.js # API calls related to authentication
+│   └── user/              # If needed for user management
+│       └── userSlice.js
+├── hooks/                 # Reusable custom hooks
+│   └── useAuth.js
+├── layouts/               # Layout components (e.g., DashboardLayout, AuthLayout)
+│   ├── AuthLayout.jsx
+│   └── DashboardLayout.jsx
+├── pages/                 # Application pages
+│   ├── LoginPage.jsx
+│   ├── RegisterPage.jsx
+│   ├── DashboardPage.jsx
+│   └── NotFoundPage.jsx
+├── redux/                 # Redux store configuration
+│   ├── store.js
+│   └── rootReducer.js
+├── utils/                 # Utility functions
+│   └── validate.js        # Input validation logic
+├── App.jsx                # Main application component
+├── index.js               # Entry point of the application
+└── setupProxy.js          # For proxying API requests (if needed)
