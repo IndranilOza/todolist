@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../features/auth/authThunks";
+import "../styles/LoginPage.css";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -8,34 +9,32 @@ const LoginPage = () => {
   const dispatch = useDispatch();
   const { isLoading, error } = useSelector((state) => state.auth);
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     dispatch(loginUser({ email, password }));
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="login-container">
+      <h1 className="login-header">Login</h1>
+      <form className="login-form" onSubmit={handleLogin}>
         <input
           type="email"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          required
         />
         <input
           type="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          required
         />
         <button type="submit" disabled={isLoading}>
           {isLoading ? "Logging in..." : "Login"}
         </button>
       </form>
-      {error && <p>{error}</p>}
+      {error && <p className="login-error">{error}</p>}
     </div>
   );
 };

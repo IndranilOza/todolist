@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../features/auth/authThunks";
+import "../styles/RegisterPage.css";
 
 const RegisterPage = () => {
   const [name, setName] = useState("");
@@ -9,41 +10,38 @@ const RegisterPage = () => {
   const dispatch = useDispatch();
   const { isLoading, error } = useSelector((state) => state.auth);
 
-  const handleSubmit = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
     dispatch(registerUser({ name, email, password }));
   };
 
   return (
-    <div>
-      <h1>Register</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="register-container">
+      <h1 className="register-header">Register</h1>
+      <form className="register-form" onSubmit={handleRegister}>
         <input
           type="text"
+          placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Name"
-          required
         />
         <input
           type="email"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          required
         />
         <input
           type="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          required
         />
         <button type="submit" disabled={isLoading}>
           {isLoading ? "Registering..." : "Register"}
         </button>
       </form>
-      {error && <p>{error}</p>}
+      {error && <p className="register-error">{error}</p>}
     </div>
   );
 };

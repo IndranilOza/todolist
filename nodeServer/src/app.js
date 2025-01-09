@@ -1,5 +1,6 @@
 const express = require("express");
 const helmet = require("helmet");
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const routes = require("./routes");
 const { connectMongo } = require("./config/db");
@@ -14,6 +15,7 @@ app.use(helmet()); // Add security headers
 app.use(logger); // Log requests
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 // Routes
 app.use("/api", routes);
