@@ -49,6 +49,7 @@ exports.loginUser = async (req, res) => {
     }
 
     const user = userResult.rows[0];
+    console.log(user);
 
     // Compare the provided password with the hashed password in the database
     const isMatch = await bcrypt.compare(password, user.password);
@@ -58,14 +59,19 @@ exports.loginUser = async (req, res) => {
 
     // Generate JWT
     const token = jwt.sign(
-      { id: user?._id, name: user?.name || "NA", email: user?.email || "NA" },
+      { id: user?.id, name: user?.name || "NA", email: user?.email || "NA" },
       process.env.JWT_SECRET,
       {
         expiresIn: "1h",
       }
     );
 
-    res.status(200).json({ message: "Login successful", token });
+    res.status(200).json({
+      message: "Login successful",
+      token,
+      user: user.name,
+      userId: user.id,
+    });
   } catch (error) {
     console.error("Error during login:", error);
     res.status(500).json({ message: "Server error", error });
