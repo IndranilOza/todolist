@@ -6,21 +6,22 @@ const TaskList = () => {
   const dispatch = useDispatch();
   const { tasks, loading, error } = useSelector((state) => state.tasks);
   const { user } = useSelector((state) => state.auth);
+  const { userId } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (user) {
-      dispatch(fetchTasks(user.id));
+      dispatch(fetchTasks(userId));
     }
-  }, [dispatch, user]);
+  }, [dispatch, userId, user]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  // if (loading) return <p>Loading...</p>;
+  // if (error) return <p>Error: {error}</p>;
 
   return (
     <div>
       <h2>Task List</h2>
       <ul>
-        {tasks.map((task) => (
+        {tasks?.map((task) => (
           <li key={task._id}>
             <strong>{task.taskName}</strong> - {task.activeStatus}
           </li>

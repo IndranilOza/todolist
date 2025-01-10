@@ -1,8 +1,46 @@
-:root {
+/* :root {
   --background-color: #f9f9f9;
   --text-color: #333;
   --primary-color: #007bff;
   --primary-color-dark: #0056b3;
   --input-border-color: #ccc;
   --error-color: #ff4d4d;
+} */
+
+:root {
+  /* Primary Colors */
+  --primary-high: #ff57bd;
+  --primary-medium: #fde1a7;
+  --primary-low: #00e2ec;
+
+  /* Accent Colors */
+  --accent-add: #1aa9e8;
+  --accent-hover: #5662f4;
+  --accent-hover-dark: #5f57f6;
+
+  /* Background Colors */
+  --bg-light: #f7ebff;
+  --bg-light-secondary: #dbefff;
+  --bg-dark: #706aed;
+  --bg-dark-secondary: #271068;
+
+  /* Task Colors */
+  --task-work: #994574;
+  --task-personal: #fde1a7;
+  --task-shopping: #1aa9e8;
+  --task-others: #c7a0f6;
+
+  /* Notification Colors */
+  --notification-success: #00e2ec;
+  --notification-warning: #f9a144;
+  --notification-error: #ff57bd;
+
+  /* Text Colors */
+  --text-primary: #271068;
+  --text-secondary: #43256f;
+  --text-muted: #f4bea3;
+
+  /* Border Colors */
+  --border-light: #dbefff;
+  --border-dark: #1aa9e8;
 }

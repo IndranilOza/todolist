@@ -19,9 +19,8 @@ function App() {
             path="/tasks"
             element={
               <>
-                hi
                 <AddTask />
-                {/* <TaskList />x` */}
+                <TaskList />
               </>
             }
           />

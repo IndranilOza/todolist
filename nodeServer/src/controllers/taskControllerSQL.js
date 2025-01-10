@@ -5,9 +5,10 @@ exports.createTask = async (req, res) => {
   try {
     const { userId, taskName, taskDetails, time, activeStatus, type } =
       req.body;
+    console.log(req.body);
 
     const query = `
-      INSERT INTO task (userId, taskName, taskDetails, time, activeStatus, type)
+      INSERT INTO tasks ("userId", "taskName", "taskDetails", "time", "activeStatus", "type")
       VALUES ($1, $2, $3, $4, $5, $6)
       RETURNING *;
     `;
@@ -29,7 +30,7 @@ exports.getTasks = async (req, res) => {
 
     const query = `
       SELECT * FROM tasks
-      WHERE userId = $1;
+      WHERE "userId" = $1;
     `;
 
     const result = await pgPool.query(query, [userId]);
