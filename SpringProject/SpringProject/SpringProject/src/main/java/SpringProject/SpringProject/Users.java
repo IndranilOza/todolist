@@ -11,35 +11,36 @@ public class Users {
 	    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	    	   private long ID;
 	    @Column
-	    	   private String CustomerName;
+	    	   private String UserId;
 	    @Column
-	    	   private String LastName;
+	    private String emailId;
 	    @Column
-	    	   private String Country;
+	    	   private String Password;
 		public long getID() {
 			return ID;
 		}
 		public void setID(long iD) {
 			this.ID = iD;
 		}
-		public String getCustomerName() {
-			return CustomerName;
+		public String UserId() {
+			return UserId;
 		}
-		public void setCustomerName(String customerName) {
-			this.CustomerName = customerName;
+		public void setUserId(String UserId) {
+			this.UserId = UserId;
 		}
-		public String getLastName() {
-			return LastName;
+		public String getEmailId() {
+	        return emailId;
+	    }
+
+	    public void setEmailId(String emailId) {
+	        this.emailId = emailId;
+	    }
+		public String getPassword() {
+			return Password;
 		}
-		public void setLastName(String lastName) {
-			this.LastName = lastName;
+		public void setPassword(String Password) {
+			this.Password = Password;
 		}
-		public String getCountry() {
-			return Country;
-		}
-		public void setCountry(String country) {
-			this.Country = country;
-		}
-	
+
 }
 
