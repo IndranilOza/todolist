@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 import java.util.Optional;
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/user")
 public class ApiController {
 //	@Autowired
 //	private PasswordEncoder passwordEncoder;
@@ -29,7 +29,7 @@ public class ApiController {
         return "Hello, " + name + "!";
     }
 
-    @PostMapping("/add")
+    @PostMapping("/registration")
     public String registerUser(@RequestBody Users data) {
         // Extract email from the input data
         String emailId = data.getEmailId();
@@ -60,5 +60,4 @@ public class ApiController {
     	 Users data= repository.findById(id).get();
 		return data ;
     }
-    
 }
