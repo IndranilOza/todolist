@@ -1,0 +1,11 @@
+CREATE TABLE tasks (
+    "taskId" SERIAL PRIMARY KEY,
+    "userId" INTEGER NOT NULL,
+    "taskName" VARCHAR(255) NOT NULL,
+    "taskDetails" TEXT,
+    "time" TIMESTAMP,
+    "activeStatus" VARCHAR(20) NOT NULL DEFAULT 'todo',
+    "type" VARCHAR(20) NOT NULL,
+    "createdAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
