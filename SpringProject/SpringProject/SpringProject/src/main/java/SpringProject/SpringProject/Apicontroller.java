@@ -60,4 +60,5 @@ public class ApiController {
     	 Users data= repository.findById(id).get();
 		return data ;
     }
+    
 }
