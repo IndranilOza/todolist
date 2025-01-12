@@ -1,11 +1,8 @@
-//Create(email,username,password,id) User data table
-//Create(userId,,taskSDetails,time,activeStatus) User details
-
 package SpringProject.SpringProject;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,8 +12,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/user")
 public class ApiController {
-//	@Autowired
-//	private PasswordEncoder passwordEncoder;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	@Autowired
 	private DataModelRepository repository; 
     @GetMapping("/")
@@ -40,9 +37,9 @@ public class ApiController {
             return "User already exists";
         }
 
-        // Hash the password before saving (if a password encoder is configured)
-//        String hashedPassword = passwordEncoder.encode(data.getPassword());
-//        data.setPassword(hashedPassword);
+        // Hash the password before saving
+        String hashedPassword = passwordEncoder.encode(data.getPassword());
+        data.setPassword(hashedPassword);
 
         // Save the new user
         repository.save(data);
