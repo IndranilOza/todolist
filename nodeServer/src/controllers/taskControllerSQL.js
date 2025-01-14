@@ -7,7 +7,7 @@ exports.createTask = async (req, res) => {
       req.body;
 
     const query = `
-      INSERT INTO task (userId, taskName, taskDetails, time, activeStatus, type)
+      INSERT INTO tasks ("userId", "taskName", "taskDetails", "time", "activeStatus", "type")
       VALUES ($1, $2, $3, $4, $5, $6)
       RETURNING *;
     `;
@@ -29,7 +29,7 @@ exports.getTasks = async (req, res) => {
 
     const query = `
       SELECT * FROM tasks
-      WHERE userId = $1;
+      WHERE "userId" = $1;
     `;
 
     const result = await pgPool.query(query, [userId]);
@@ -49,8 +49,8 @@ exports.updateTask = async (req, res) => {
 
     const query = `
       UPDATE tasks
-      SET taskName = $1, taskDetails = $2, time = $3, activeStatus = $4, type = $5
-      WHERE taskId = $6
+      SET "taskName" = $1, "taskDetails" = $2, "time" = $3, "activeStatus" = $4, "type" = $5
+      WHERE "taskId" = $6
       RETURNING *;
     `;
 
@@ -75,7 +75,7 @@ exports.deleteTask = async (req, res) => {
 
     const query = `
       DELETE FROM tasks
-      WHERE taskId = $1
+      WHERE "taskId" = $1
       RETURNING *;
     `;
 

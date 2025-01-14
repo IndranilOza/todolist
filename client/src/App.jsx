@@ -7,6 +7,7 @@ import RegisterPage from "./pages/RegisterPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import AddTask from "./components/AddTask";
 import TaskList from "./components/TaskList";
+import Dashboard from "./layout/Dashboard";
 
 function App() {
   return (
@@ -15,16 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route
-            path="/tasks"
-            element={
-              <>
-                hi
-                <AddTask />
-                {/* <TaskList />x` */}
-              </>
-            }
-          />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Router>

@@ -1,0 +1,77 @@
+.dashboard-container {
+  display: flex;
+  height: 100dvh;
+}
+
+.sidebar {
+  width: 15%;
+  background-color: var(--bg-dark-primary);
+}
+
+.content {
+  flex: 1;
+}
+
+.search-bar {
+  display: flex;
+  background-color: white;
+}
+.search-container {
+  flex: 1;
+  position: relative;
+}
+.search-task {
+  border: none;
+  height: 50px;
+  padding: 0px 40px;
+  font-family: inherit;
+  font-weight: 500;
+  /* font-size: 1rem; */
+}
+
+.search-inp-label {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translate(0%, -50%);
+  /* font-size: 0.9rem; */
+  color: var(--text-color-gray);
+}
+
+.create-button {
+  border: none;
+  font-family: inherit;
+  width: 100px;
+  height: 30px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  color: white;
+  background-color: var(--accent-add);
+}
+
+.create-task-section {
+  display: flex;
+  min-width: 160px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.task-notification {
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-add);
+  cursor: pointer;
+  border: none;
+  background-color: white;
+}
+.filter-section {
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
