@@ -1,14 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Provider } from "react-redux";
-import { store } from "./redux/store";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
-import NotFoundPage from "./pages/NotFoundPage";
-import AddTask from "./components/AddTask";
-import TaskList from "./components/TaskList";
+import Routing from "./router/Routing";
 
 function App() {
+<<<<<<< HEAD
   return (
     <Provider store={store}>
       <Router>
@@ -29,6 +23,9 @@ function App() {
       </Router>
     </Provider>
   );
+=======
+  return <Routing />;
+>>>>>>> 10f754e945209b212699e31e6621136b49a0d99e
 }
 
 export default App;

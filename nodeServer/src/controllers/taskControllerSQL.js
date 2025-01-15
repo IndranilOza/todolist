@@ -50,8 +50,8 @@ exports.updateTask = async (req, res) => {
 
     const query = `
       UPDATE tasks
-      SET taskName = $1, taskDetails = $2, time = $3, activeStatus = $4, type = $5
-      WHERE taskId = $6
+      SET "taskName" = $1, "taskDetails" = $2, "time" = $3, "activeStatus" = $4, "type" = $5
+      WHERE "taskId" = $6
       RETURNING *;
     `;
 
@@ -76,7 +76,7 @@ exports.deleteTask = async (req, res) => {
 
     const query = `
       DELETE FROM tasks
-      WHERE taskId = $1
+      WHERE "taskId" = $1
       RETURNING *;
     `;
 

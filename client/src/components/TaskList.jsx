@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTasks } from "../features/task/taskThunk";
 
@@ -12,10 +12,14 @@ const TaskList = () => {
     if (user) {
       dispatch(fetchTasks(userId));
     }
+<<<<<<< HEAD
   }, [dispatch, userId, user]);
 
   // if (loading) return <p>Loading...</p>;
   // if (error) return <p>Error: {error}</p>;
+=======
+  }, [dispatch, user, userId]);
+>>>>>>> 10f754e945209b212699e31e6621136b49a0d99e
 
   return (
     <div>

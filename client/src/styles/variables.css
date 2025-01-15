@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* :root {
   --background-color: #f9f9f9;
   --text-color: #333;
@@ -7,6 +8,8 @@
   --error-color: #ff4d4d;
 } */
 
+=======
+>>>>>>> 10f754e945209b212699e31e6621136b49a0d99e
 :root {
   /* Primary Colors */
   --primary-high: #ff57bd;
@@ -21,7 +24,12 @@
   /* Background Colors */
   --bg-light: #f7ebff;
   --bg-light-secondary: #dbefff;
+<<<<<<< HEAD
   --bg-dark: #706aed;
+=======
+  --bg-dark-primary: #706aed;
+  --bg-dark-accent: #5d56e3;
+>>>>>>> 10f754e945209b212699e31e6621136b49a0d99e
   --bg-dark-secondary: #271068;
 
   /* Task Colors */
@@ -39,6 +47,10 @@
   --text-primary: #271068;
   --text-secondary: #43256f;
   --text-muted: #f4bea3;
+<<<<<<< HEAD
+=======
+  --text-color-gray: rgb(123, 118, 118);
+>>>>>>> 10f754e945209b212699e31e6621136b49a0d99e
 
   /* Border Colors */
   --border-light: #dbefff;
