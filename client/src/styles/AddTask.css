@@ -1,0 +1,53 @@
+.add-task-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-task-form {
+  width: 30dvw;
+  height: 90dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  overflow: auto;
+  padding: 10px;
+}
+
+.add-task-form input,
+.add-task-form textarea,
+.add-task-form select {
+  border: none;
+  background-color: #e0f9f4;
+  outline: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: inherit;
+}
+
+.add-task-form div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 3px;
+}
+.add-task-form label {
+  color: var(--text-color-gray);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.add-task-btn {
+  border: none;
+  background-color: #00898d;
+  color: white;
+  font-family: inherit;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  padding: 8px 0px;
+}

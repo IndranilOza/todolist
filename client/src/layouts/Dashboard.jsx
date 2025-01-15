@@ -9,6 +9,8 @@ import { IoIosCreate } from "react-icons/io";
 import { logout } from "../features/auth/authSlice";
 import { AnimatePresence, motion } from "framer-motion";
 import AddTask from "../components/AddTask";
+import { MdOutlineDashboardCustomize } from "react-icons/md";
+import { IoMdCloseCircle } from "react-icons/io";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -90,7 +92,12 @@ const Dashboard = () => {
       <div className="dashboard-container">
         <div className="sidebar">
           <Profile />
-          <div>Dashboard</div>
+          <div className="sidebar-dash">
+            <span>
+              <MdOutlineDashboardCustomize />
+            </span>
+            <span> Dashboard</span>
+          </div>
           <button onClick={() => dispatch(logout())}>Log out</button>
         </div>
         <div className="content">
@@ -144,13 +151,17 @@ const Dashboard = () => {
             className="add-task-overlay"
           >
             <motion.div
-              initial={{ width: "0dvw" }}
-              animate={{ width: "60dvw" }}
-              exit={{ width: "0dvw" }}
+              initial={{ width: "0dvw", opacity: 0 }}
+              animate={{ width: "40dvw", opacity: 1 }}
+              exit={{ width: "0dvw", opacity: 0 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
               className="add-task-modal"
             >
-              <button onClick={handleToggle}>close</button>
+              <motion.div>
+                <button className="close-btn" onClick={handleToggle}>
+                  <IoMdCloseCircle />
+                </button>
+              </motion.div>
               <AddTask />
             </motion.div>
           </motion.div>

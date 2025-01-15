@@ -4,8 +4,28 @@
 }
 
 .sidebar {
+  min-width: 160px;
   width: 15%;
   background-color: var(--bg-dark-primary);
+}
+
+.sidebar-dash {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.sidebar-dash span {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-dash > span:nth-child(1) {
+  margin-right: 5px;
+}
+.sidebar-dash > span:nth-child(2) {
+  font-weight: 500;
 }
 
 .content {
@@ -93,4 +113,21 @@
 
 .add-task-modal {
   background-color: white;
+  height: 100dvh;
+  width: 40dvw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  left: -40px;
+  top: 10px;
+  background-color: rgba(240, 248, 255, 0);
+  border: none;
+  font-size: 1.5rem;
+  color: var(--bg-dark-accent);
+  cursor: pointer;
 }

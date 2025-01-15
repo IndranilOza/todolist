@@ -15,6 +15,9 @@
 
 .register-bg {
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .register-bg img {

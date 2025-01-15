@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RegisterPage from "../pages/RegisterPage";
 import NotFoundPage from "../pages/NotFoundPage";
-import Dashboard from "../layout/Dashboard";
-import LandingPage from "../layout/LandingPage";
+import Dashboard from "../layouts/Dashboard";
+import LandingPage from "../layouts/LandingPage";
 import ProtectedRoute from "./ProtectedRoute";
 import { Provider } from "react-redux";
 import { store } from "../redux/store";

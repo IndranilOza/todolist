@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTask } from "../features/task/taskThunk";
+import "../styles/AddTask.css";
 
 const AddTask = () => {
   const [taskName, setTaskName] = useState("");
@@ -34,9 +35,9 @@ const AddTask = () => {
   };
 
   return (
-    <div>
-      <h2>Add Task</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="add-task-main">
+      <form className="add-task-form" onSubmit={handleSubmit}>
+        <h3>Add Task</h3>
         <div>
           <label>Task Name:</label>
           <input
@@ -82,7 +83,9 @@ const AddTask = () => {
             required
           />
         </div>
-        <button type="submit">Add Task</button>
+        <button className="add-task-btn" type="submit">
+          Add Task
+        </button>
       </form>
     </div>
   );
