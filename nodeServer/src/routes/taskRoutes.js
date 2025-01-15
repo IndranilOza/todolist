@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-// const taskController = require("../controllers/taskControllerSQL");
-const taskController = require("../controllers/taskControllerMongo");
+const taskController = require("../controllers/taskControllerSQL");
+// const taskController = require("../controllers/taskControllerMongo");
 const authenticate = require("../middlewares/auth"); // Import the authentication middleware
 
 // Use authentication for all routes related to tasks

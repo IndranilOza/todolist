@@ -1,26 +1,65 @@
-.container {
-  max-width: 400px;
-  margin: 50px auto;
+.login-container {
+  /* background-color: #f0fcfa; */
+  border: 2px solid #c9fbf2;
+  height: 60%;
   padding: 20px;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-}
-
-.header {
-  font-size: 24px;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.form {
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+.login-header {
+  font-size: 1.5rem;
+  text-align: center;
 }
 
-.errorMessage {
-  color: var(--error-color);
-  font-size: 14px;
-  margin: 10px 0;
-  text-align: center;
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 18rem;
+}
+
+.login-form input {
+  border: none;
+  background-color: #e0f9f4;
+  font-family: inherit;
+  font-size: 0.9rem;
+  height: 2rem;
+  padding: 0px 10px;
+  border-radius: 5px;
+}
+
+.login-form button {
+  border: none;
+  background-color: #00898d;
+  color: white;
+  font-family: inherit;
+  font-weight: 600;
+  height: 2rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.forgot-password,
+.create-account-section {
+  display: flex;
+  font-size: 0.8rem;
+  align-items: center;
+}
+
+.forgot-password button,
+.create-account-section button {
+  border: none;
+  background-color: white;
+  color: #00898d;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-family: inherit;
+}
+
+.create-account-section {
+  justify-content: right;
+  margin: 20px 0px;
 }

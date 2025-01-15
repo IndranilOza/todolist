@@ -21,12 +21,26 @@ exports.registerUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Insert the new user into the database
-    await pgPool.query(
-      "INSERT INTO users (name, email, password) VALUES ($1, $2, $3)",
+    const userResult = await pgPool.query(
+      "INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *",
       [name, email, hashedPassword]
     );
 
-    res.status(201).json({ message: "User registered successfully" });
+    const user = userResult?.rows[0];
+    // Generate JWT
+    const token = jwt.sign(
+      { id: user?.id, name: user?.name || "NA", email: user?.email || "NA" },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1h",
+      }
+    );
+    res.status(201).json({
+      message: "User registered successfully",
+      token,
+      user: user.name,
+      userId: user.id,
+    });
   } catch (error) {
     console.error("Error during registration:", error);
     res.status(500).json({ message: "Server error", error });
@@ -49,7 +63,6 @@ exports.loginUser = async (req, res) => {
     }
 
     const user = userResult.rows[0];
-    console.log(user);
 
     // Compare the provided password with the hashed password in the database
     const isMatch = await bcrypt.compare(password, user.password);
@@ -76,4 +89,18 @@ exports.loginUser = async (req, res) => {
     console.error("Error during login:", error);
     res.status(500).json({ message: "Server error", error });
   }
+};
+
+exports.validateUser = async (req, res) => {
+  const token = req.headers.authorization?.split(" ")[1];
+  if (!token) {
+    return res.status(401).json({ error: "Token required" });
+  }
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ error: "Invalid token" });
+    }
+    res.status(200).json({ message: "Token is valid" });
+  });
 };
