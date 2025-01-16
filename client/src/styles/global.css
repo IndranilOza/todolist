@@ -15,3 +15,89 @@ input {
 input:focus {
   outline: none;
 }
+
+.gear-a {
+  animation: rotate 4s linear infinite;
+  transform-origin: 402.5px 119.5px; /* Set the rotation origin */
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.gear-b {
+  animation: rotate 4s linear infinite;
+  transform-origin: 420.8px 128.5px; /* Set the rotation origin */
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.number-a {
+  animation: shaky-move 4s ease-in-out infinite; /* Animation properties */
+}
+
+@keyframes shaky-move {
+  0%,
+  100% {
+    transform: translate(0px, 0); /* Original position */
+  }
+  25% {
+    transform: translate(-10px, -2px); /* Move up slightly */
+  }
+  50% {
+    transform: translate(5px, 5px); /* Move down slightly */
+  }
+  75% {
+    transform: translate(-3px, -6px); /* Move up a bit */
+  }
+}
+.number-b {
+  animation: shaky-move 4s ease-in-out infinite; /* Animation properties */
+}
+
+@keyframes shaky-move {
+  0%,
+  100% {
+    transform: translate(0px, 0); /* Original position */
+  }
+  25% {
+    transform: translate(-5px, -3px); /* Move up slightly */
+  }
+  50% {
+    transform: translate(5px, 10px); /* Move down slightly */
+  }
+  75% {
+    transform: translate(-5px, -3px); /* Move up a bit */
+  }
+}
+.number-c {
+  animation: shaky-move 4s ease-in-out infinite; /* Animation properties */
+}
+
+@keyframes shaky-move {
+  0%,
+  100% {
+    transform: translate(0px, 0); /* Original position */
+  }
+  25% {
+    transform: translate(-3px, -5px); /* Move up slightly */
+  }
+  50% {
+    transform: translate(3px, 5px); /* Move down slightly */
+  }
+  75% {
+    transform: translate(-2px, -3px); /* Move up a bit */
+  }
+}

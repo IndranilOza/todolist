@@ -1,0 +1,17 @@
+.task-card-main {
+  height: 250px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin: 0; /* Remove individual card margins since `gap` is applied */
+  box-sizing: border-box; /* Ensure padding and border don't increase width */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.card-details {
+  flex: 1;
+  overflow: auto;
+}

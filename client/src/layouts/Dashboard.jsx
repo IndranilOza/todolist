@@ -11,6 +11,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import AddTask from "../components/AddTask";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
 import { IoMdCloseCircle } from "react-icons/io";
+import { IoMdLogOut } from "react-icons/io";
+import TaskCard from "../components/TaskCard";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -31,6 +33,10 @@ const Dashboard = () => {
   useEffect(() => {
     applyFilters(activeFilter);
   }, [activeFilter, tasks]);
+
+  const handleSetFilter = (filter) => {
+    setActiveFilter(filter);
+  };
 
   // Filter handler
   const applyFilters = (filter) => {
@@ -98,7 +104,74 @@ const Dashboard = () => {
             </span>
             <span> Dashboard</span>
           </div>
-          <button onClick={() => dispatch(logout())}>Log out</button>
+          <div className="filter-btn">
+            <button
+              className={activeFilter === "all" ? "flt-btn-active" : ""}
+              onClick={() => handleSetFilter("all")}
+            >
+              All
+            </button>
+            <button
+              className={activeFilter === "today" ? "flt-btn-active" : ""}
+              onClick={() => handleSetFilter("today")}
+            >
+              Today
+            </button>
+            <button
+              className={activeFilter === "coming" ? "flt-btn-active" : ""}
+              onClick={() => handleSetFilter("coming")}
+            >
+              Coming
+            </button>
+            <button
+              className={activeFilter === "overdue" ? "flt-btn-active" : ""}
+              onClick={() => handleSetFilter("overdue")}
+            >
+              Overdue
+            </button>
+            <button
+              className={activeFilter === "to do" ? "flt-btn-active" : ""}
+              onClick={() => handleSetFilter("to do")}
+            >
+              To do
+            </button>
+            <button
+              className={activeFilter === "done" ? "flt-btn-active" : ""}
+              onClick={() => handleSetFilter("done")}
+            >
+              Done
+            </button>
+            <button
+              className={activeFilter === "in progress" ? "flt-btn-active" : ""}
+              onClick={() => handleSetFilter("in progress")}
+            >
+              In Progress
+            </button>
+            <button
+              className={activeFilter === "personal" ? "flt-btn-active" : ""}
+              onClick={() => handleSetFilter("personal")}
+            >
+              Personal
+            </button>
+            <button
+              className={activeFilter === "work" ? "flt-btn-active" : ""}
+              onClick={() => handleSetFilter("work")}
+            >
+              Work
+            </button>
+            <button
+              className={activeFilter === "social" ? "flt-btn-active" : ""}
+              onClick={() => handleSetFilter("social")}
+            >
+              Social
+            </button>
+            <button
+              className={activeFilter === "study" ? "flt-btn-active" : ""}
+              onClick={() => handleSetFilter("study")}
+            >
+              Study
+            </button>
+          </div>
         </div>
         <div className="content">
           <div className="search-bar">
@@ -123,14 +196,14 @@ const Dashboard = () => {
                 </span>
               </button>
 
-              <button className="task-notification">
-                <IoNotificationsCircle />
+              <button className="log-out">
+                <IoMdLogOut />
               </button>
             </div>
           </div>
           <div className="filter-section">
-            <div className="task-count">35 tasks</div>
-            <div className="filter-date"></div>
+            <div className="task-count">{filteredTasks.length} Tasks</div>
+            {/* <div className="filter-date"></div>
             <select name="task-status" id="task-status">
               <option value="" disabled={true}>
                 By Status
@@ -138,7 +211,17 @@ const Dashboard = () => {
               <option value="todo">Todo</option>
               <option value="done">Done</option>
               <option value="in progress">In Progress</option>
-            </select>
+            </select> */}
+          </div>
+          <div className="task-card-container">
+            <ul>
+              {filteredTasks.map((task) => (
+                <li key={task.taskId}>
+                  <TaskCard state={task} />
+                </li>
+              ))}
+            </ul>
+            {filteredTasks.length === 0 && <p>No tasks found.</p>}
           </div>
         </div>
       </div>
