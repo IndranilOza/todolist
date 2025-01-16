@@ -53,8 +53,12 @@
 
 .flt-btn-active {
   font-weight: 600;
-  border-left: 2px solid var(--bg-light) !important;
-  border-bottom: 2px solid var(--bg-light) !important;
+  /* border-left: 2px solid var(--bg-light) !important;
+  border-bottom: 2px solid var(--bg-light) !important; */
+  background-color: var(--bg-light) !important;
+  color: var(--bg-dark-primary) !important;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .content {
