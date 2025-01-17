@@ -101,3 +101,20 @@ input:focus {
     transform: translate(-2px, -3px); /* Move up a bit */
   }
 }
+
+::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+  background-color: var(--border-light);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-low);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-dark);
+  cursor: pointer;
+}
