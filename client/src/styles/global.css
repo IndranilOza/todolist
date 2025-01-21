@@ -4,45 +4,117 @@ body {
   font-family: "Arial", sans-serif;
   margin: 0;
   padding: 0;
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-
-a {
-  color: var(--primary-color);
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-button {
-  cursor: pointer;
-  background-color: var(--primary-color);
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: var(--primary-color-dark);
+  background-color: var(--bg-light);
 }
 
 input {
-  border: 1px solid var(--input-border-color);
-  border-radius: 4px;
-  padding: 10px;
-  font-size: 14px;
-  width: 100%;
-  margin-bottom: 10px;
-  transition: border 0.3s ease;
+  /* width: 100%; */
+  transition: all 0.3s ease;
 }
 
 input:focus {
-  border: 1px solid var(--primary-color);
   outline: none;
+}
+
+.gear-a {
+  animation: rotate 4s linear infinite;
+  transform-origin: 402.5px 119.5px; /* Set the rotation origin */
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.gear-b {
+  animation: rotate 4s linear infinite;
+  transform-origin: 420.8px 128.5px; /* Set the rotation origin */
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.number-a {
+  animation: shaky-move 4s ease-in-out infinite; /* Animation properties */
+}
+
+@keyframes shaky-move {
+  0%,
+  100% {
+    transform: translate(0px, 0); /* Original position */
+  }
+  25% {
+    transform: translate(-10px, -2px); /* Move up slightly */
+  }
+  50% {
+    transform: translate(5px, 5px); /* Move down slightly */
+  }
+  75% {
+    transform: translate(-3px, -6px); /* Move up a bit */
+  }
+}
+.number-b {
+  animation: shaky-move 4s ease-in-out infinite; /* Animation properties */
+}
+
+@keyframes shaky-move {
+  0%,
+  100% {
+    transform: translate(0px, 0); /* Original position */
+  }
+  25% {
+    transform: translate(-5px, -3px); /* Move up slightly */
+  }
+  50% {
+    transform: translate(5px, 10px); /* Move down slightly */
+  }
+  75% {
+    transform: translate(-5px, -3px); /* Move up a bit */
+  }
+}
+.number-c {
+  animation: shaky-move 4s ease-in-out infinite; /* Animation properties */
+}
+
+@keyframes shaky-move {
+  0%,
+  100% {
+    transform: translate(0px, 0); /* Original position */
+  }
+  25% {
+    transform: translate(-3px, -5px); /* Move up slightly */
+  }
+  50% {
+    transform: translate(3px, 5px); /* Move down slightly */
+  }
+  75% {
+    transform: translate(-2px, -3px); /* Move up a bit */
+  }
+}
+
+::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+  background-color: var(--border-light);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-low);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-dark);
+  cursor: pointer;
 }

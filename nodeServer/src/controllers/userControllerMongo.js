@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModelMongo"); // For MongoDB User model
 const { pgPool } = require("../config/db");
+const jwt = require("jsonwebtoken");
 
 // User registration
 exports.registerUser = async (req, res) => {
@@ -53,8 +54,26 @@ exports.loginUser = async (req, res) => {
       }
     );
 
-    res.status(200).json({ message: "Login successful", token });
+    res.status(200).json({
+      message: "Login successful",
+      token,
+      user: user?.name,
+      userId: user?._id,
+    });
   } catch (error) {
     res.status(500).json({ message: "Server error", error });
   }
 };
+exports.validateUser((req, res) => {
+  const token = req.headers.authorization?.split(" ")[1];
+  if (!token) {
+    return res.status(401).json({ error: "Token required" });
+  }
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ error: "Invalid token" });
+    }
+    res.status(200).json({ message: "Token is valid" });
+  });
+});
