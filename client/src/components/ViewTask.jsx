@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import "../styles/ViewTask.css";
 import { formatToLocalTime } from "./../utilities/helper";
+import { motion } from "framer-motion";
+import { FaRegEdit } from "react-icons/fa";
+import { IoMdCloseCircle } from "react-icons/io";
+import { format } from "date-fns";
 
 const ViewTask = ({ isOpen, onClose, task, onUpdate }) => {
   const [editedTask, setEditedTask] = useState({ ...task });
+  const [editToggle, setEditToggle] = useState(false);
 
   if (!isOpen) return null;
 
@@ -17,12 +22,23 @@ const ViewTask = ({ isOpen, onClose, task, onUpdate }) => {
     onClose();
   };
 
+  const formatToDatetimeLocal = (dateString) => {
+    const date = new Date(dateString);
+    return format(date, "yyyy-MM-dd'T'HH:mm");
+  };
+
   return (
-    <div className="view-task-modal">
+    <motion.div className="view-task-modal">
       <div className="modal-header">
-        <h2>View & Edit Task</h2>
+        <h3>View & Edit Task</h3>
+        <button
+          className="edit-btn"
+          onClick={() => setEditToggle((prev) => !prev)}
+        >
+          <FaRegEdit />
+        </button>
         <button className="close-button" onClick={onClose}>
-          &times;
+          <IoMdCloseCircle />
         </button>
       </div>
       <div className="modal-body">
@@ -69,21 +85,23 @@ const ViewTask = ({ isOpen, onClose, task, onUpdate }) => {
             <input
               type="datetime-local"
               name="time"
-              value={formatToLocalTime(editedTask.time, "YYYY-MM-DDTHH:mm")}
+              value={formatToDatetimeLocal(editedTask.time, "YYYY-MM-DDTHH:mm")}
               onChange={handleChange}
             />
           </div>
         </form>
       </div>
-      <div className="modal-footer">
-        <button className="save-button" onClick={handleUpdate}>
-          Save
-        </button>
-        <button className="cancel-button" onClick={onClose}>
-          Cancel
-        </button>
-      </div>
-    </div>
+      {editToggle && (
+        <div className="modal-footer">
+          <button className="save-button" onClick={handleUpdate}>
+            Save
+          </button>
+          <button className="cancel-button" onClick={onClose}>
+            Cancel
+          </button>
+        </div>
+      )}
+    </motion.div>
   );
 };
 
