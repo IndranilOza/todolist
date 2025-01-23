@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles/TaskCard.css";
 import { formatToLocalTime } from "./../utilities/helper";
-import { FaRegEdit } from "react-icons/fa";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FiEye } from "react-icons/fi";
 import ViewTask from "./ViewTask";
