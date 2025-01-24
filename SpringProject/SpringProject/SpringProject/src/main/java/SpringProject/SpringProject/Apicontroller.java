@@ -1,9 +1,11 @@
 package SpringProject.SpringProject;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -15,8 +17,18 @@ public class ApiController {
 
     // Register a new user
     @PostMapping("/user/registration")
-    public String registerUser(@RequestBody Users data) {
-        return userService.registerUser(data);
+    public RegistrationResponse registerUser(@RequestBody Users user) {
+        return userService.registerUser(user);
+    }
+    //Login
+    @PostMapping("/user/login")
+    public ResponseEntity<Map<String, Object>> loginUser(@RequestBody Map<String, String> loginRequest) {
+        String email = loginRequest.get("emailId");
+        String password = loginRequest.get("password");
+
+        //return the response
+        Map<String, Object> loginResponse = userService.loginUser(email, password);
+        return ResponseEntity.ok(loginResponse);
     }
 
      //Fetch all users

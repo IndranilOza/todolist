@@ -7,7 +7,9 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.crypto.SecretKey;
@@ -15,8 +17,7 @@ import javax.crypto.SecretKey;
 @Service
 public class UserService {
 
-    private static final String SECRET_KEY = "yourSecretKey"; // Replace with a secure key
-    private static final long EXPIRATION_TIME = 24 * 60 * 60 * 1000; // Token validity in milliseconds (1 day)
+    private static final long EXPIRATION_TIME = 7 * 60 * 1000; // Token validity in milliseconds (7 minute)
 
     private final DataModelRepository repository;
     private final PasswordEncoder passwordEncoder;
@@ -42,13 +43,13 @@ public class UserService {
         Users savedUser = repository.save(data);
 
         // Generate JWT token
-        String token = generateToken(savedUser.getID(), savedUser.UserId(), savedUser.getEmailId());
+        String token = generateToken(savedUser.getID(), savedUser.getUserId(), savedUser.getEmailId());
 
         // Create and return the response
         return new RegistrationResponse(
                 "Registration successful",
                 token,
-                savedUser.UserId(),
+                savedUser.getUserId(),
                 savedUser.getID()
         );
     }
@@ -76,5 +77,33 @@ public class UserService {
     // Fetch a user by ID
     public Optional<Users> getUserById(long id) {
         return repository.findById(id);
+    }
+    //Login after Registration
+    public Map<String, Object> loginUser(String email, String password) {
+        // Check if the user exists
+        Optional<Users> userOptional = repository.findByEmailId(email);
+        if (userOptional.isEmpty()) {
+            throw new RuntimeException("Invalid email");
+        }
+
+        Users user = userOptional.get();
+
+        // Validate the password
+//        String hashedPassword = passwordEncoder.encode(password);
+        if (!passwordEncoder.matches(password, user.getPassword())) {
+            throw new RuntimeException("Invalid email or password");
+        }
+
+        // Generate JWT token
+        String token = generateToken(user.getID(), user.getUserId(), user.getEmailId());
+
+        // Return a map with the response details
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Login successful");
+        response.put("token", token);
+        response.put("userId", user.getUserId());
+        response.put("id", user.getID());
+
+        return response;
     }
 }
