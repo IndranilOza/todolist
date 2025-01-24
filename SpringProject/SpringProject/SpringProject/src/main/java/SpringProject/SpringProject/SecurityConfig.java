@@ -21,7 +21,7 @@ public class SecurityConfig{
         http
             .csrf(csrf -> csrf.disable()) // Disable CSRF for simplicity; enable in production if necessary
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/user/registration","/api/user/data","/api/user/data/{id}","/api/user/login").permitAll() // Allow public access to registration endpoint
+                .requestMatchers("/api/users/registration","/api/users/data","/api/users/data/{id}","/api/users/login").permitAll() // Allow public access to registration endpoint
                 .anyRequest().authenticated() // All other endpoints require authentication
             )
             .formLogin(form -> form.disable())

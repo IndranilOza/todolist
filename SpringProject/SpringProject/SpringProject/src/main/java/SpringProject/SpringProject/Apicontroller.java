@@ -16,12 +16,12 @@ public class ApiController {
     private UserService userService;
 
     // Register a new user
-    @PostMapping("/user/registration")
+    @PostMapping("/users/registration")
     public RegistrationResponse registerUser(@RequestBody Users user) {
         return userService.registerUser(user);
     }
     //Login
-    @PostMapping("/user/login")
+    @PostMapping("/users/login")
     public ResponseEntity<Map<String, Object>> loginUser(@RequestBody Map<String, String> loginRequest) {
         String email = loginRequest.get("emailId");
         String password = loginRequest.get("password");
@@ -32,13 +32,13 @@ public class ApiController {
     }
 
      //Fetch all users
-    @GetMapping("/user/data")
+    @GetMapping("/users/data")
     public List<Users> getAllData1() {
         return userService.getAllUsers();
     }
 
     // Fetch a user by ID
-    @GetMapping("/user/data/{id}")
+    @GetMapping("/users/data/{id}")
     public Users fetchById(@PathVariable long id) {
         Optional<Users> user = userService.getUserById(id);
         return user.orElse(null); // Return user or null if not found

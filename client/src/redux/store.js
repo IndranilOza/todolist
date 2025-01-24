@@ -41,7 +41,7 @@ const persistor = persistStore(store);
 const validateToken = async (token) => {
   try {
     const response = await axios.get(
-      "http://localhost:5000/api/users/validate-token",
+      "http://localhost:8080/api/users/validate-token",
       {
         headers: {
           Authorization: `Bearer ${token}`,
