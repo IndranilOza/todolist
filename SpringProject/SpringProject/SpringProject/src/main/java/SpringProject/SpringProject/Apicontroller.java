@@ -23,7 +23,7 @@ public class ApiController {
     //Login
     @PostMapping("/users/login")
     public ResponseEntity<Map<String, Object>> loginUser(@RequestBody Map<String, String> loginRequest) {
-        String email = loginRequest.get("emailId");
+        String email = loginRequest.get("email");
         String password = loginRequest.get("password");
 
         //return the response
