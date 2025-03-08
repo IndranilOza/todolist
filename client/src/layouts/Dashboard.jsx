@@ -20,9 +20,10 @@ const Dashboard = () => {
   const { tasks } = useSelector((state) => state.tasks);
   const { user } = useSelector((state) => state.auth);
   const { userId } = useSelector((state) => state.auth);
+  const [search, setSearch] = useState("");
 
   const [filteredTasks, setFilteredTasks] = useState([]);
-  const [activeFilter, setActiveFilter] = useState("all");
+  const [activeFilter, setActiveFilter] = useState("todo");
 
   useEffect(() => {
     if (user) {
@@ -36,6 +37,22 @@ const Dashboard = () => {
 
   const handleSetFilter = (filter) => {
     setActiveFilter(filter);
+    setSearch("");
+  };
+
+  // Search handler
+  const handleSearch = (e) => {
+    handleSetFilter("search");
+    const searchData = e.target.value.toLowerCase();
+    setSearch(e.target.value);
+    // Filter the tasks array
+    const filtered = tasks.filter((task) =>
+      Object.values(task).some((value) =>
+        value.toString().toLowerCase().includes(searchData)
+      )
+    );
+
+    setFilteredTasks(filtered);
   };
 
   // Filter handler
@@ -130,8 +147,8 @@ const Dashboard = () => {
               Overdue
             </button>
             <button
-              className={activeFilter === "to do" ? "flt-btn-active" : ""}
-              onClick={() => handleSetFilter("to do")}
+              className={activeFilter === "todo" ? "flt-btn-active" : ""}
+              onClick={() => handleSetFilter("todo")}
             >
               To do
             </button>
@@ -180,11 +197,13 @@ const Dashboard = () => {
                 <FiSearch />
               </label>
               <input
+                value={search}
                 type="search"
                 className="search-task"
                 name="search-task"
                 placeholder="Search for tasks"
                 id="search-task"
+                onChange={handleSearch}
               />
             </div>
 
@@ -221,7 +240,11 @@ const Dashboard = () => {
                 </li>
               ))}
             </ul>
-            {filteredTasks.length === 0 && <p>No tasks found.</p>}
+            {filteredTasks.length === 0 && (
+              <p style={{ color: "var(  --text-gray-secondary)" }}>
+                No tasks found.
+              </p>
+            )}
           </div>
         </div>
       </div>

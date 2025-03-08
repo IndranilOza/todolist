@@ -22,7 +22,7 @@ public class Users {
 		public void setID(long iD) {
 			this.ID = iD;
 		}
-		public String UserId() {
+		public String getUserId() {
 			return UserId;
 		}
 		public void setUserId(String UserId) {

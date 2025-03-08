@@ -5,7 +5,9 @@ req = {
 }
 res = {
     "message": "Login successful",
-    "token": "JWT token",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwibmFtZSI6IlBhbGxhYiBCaXN3YXMiLCJlbWFpbCI6ImFiY0BtYWlsLmNvbSIsImlhdCI6MTczNzUyNTAwMCwiZXhwIjoxNzM3NTI4NjAwfQ.u798DwGFN9tptsDF42zLeTT8V4Q-s2YqehgK7K81UwE",
+    "user": "Pallab Biswas",
+    "userId": 5
 }
 
 endpoint(post) - /api/users/register
@@ -15,5 +17,8 @@ req = {
     "password":"Pallab"
 }
 res = {
-    "message": "User registered successfully"
+    "message": "Login successful",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwibmFtZSI6IlBhbGxhYiBCaXN3YXMiLCJlbWFpbCI6ImFiY0BtYWlsLmNvbSIsImlhdCI6MTczNzUyNTAwMCwiZXhwIjoxNzM3NTI4NjAwfQ.u798DwGFN9tptsDF42zLeTT8V4Q-s2YqehgK7K81UwE",
+    "user": "Pallab Biswas",
+    "userId": 5
 }

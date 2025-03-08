@@ -9,6 +9,11 @@
   --accent-hover: #5662f4;
   --accent-hover-dark: #5f57f6;
 
+  /* task status color  */
+  --done: #1aa9e8;
+  --in-progress: #5662f4;
+  --todo: #ff57bd;
+
   /* Background Colors */
   --bg-light: #f7ebff;
   --bg-light-secondary: #dbefff;
@@ -18,9 +23,9 @@
 
   /* Task Colors */
   --task-work: #994574;
-  --task-personal: #fde1a7;
-  --task-shopping: #1aa9e8;
-  --task-others: #c7a0f6;
+  --task-personal: #5662f4;
+  --task-social: #1aa9e8;
+  --task-study: #c7a0f6;
 
   /* Notification Colors */
   --notification-success: #00e2ec;
@@ -31,7 +36,8 @@
   --text-primary: #271068;
   --text-secondary: #43256f;
   --text-muted: #f4bea3;
-  --text-color-gray: rgb(123, 118, 118);
+  --text-gray: rgb(123, 118, 118);
+  --text-gray-secondary: rgb(153, 146, 146);
 
   /* Border Colors */
   --border-light: #dbefff;
