@@ -215,7 +215,7 @@ const Dashboard = () => {
                 </span>
               </button>
 
-              <button className="log-out">
+              <button onClick={() => dispatch(logout())} className="log-out">
                 <IoMdLogOut />
               </button>
             </div>
