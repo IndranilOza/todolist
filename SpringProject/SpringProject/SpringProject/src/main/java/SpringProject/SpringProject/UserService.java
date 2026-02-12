@@ -55,8 +55,9 @@ public class UserService {
     }
 
     // Generate JWT token
+    private static final SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     private String generateToken(long id, String userId, String email) {
-    	  SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+//    	  SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
         return Jwts.builder()
                 .setSubject(email)
@@ -105,5 +106,31 @@ public class UserService {
         response.put("id", user.getID());
 
         return response;
+    }
+    
+    public Map<String, Object> validateToken(String token) {
+    	 Map<String, Object> response1 = new HashMap<>();
+        try {
+            Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token);  // Validates signature and expiration
+            Map<String, Object> response = new HashMap<>();
+            response.put("message","Token is valid");
+            response.put("message","Token is not valid");
+            return response; // Token is valid
+        } catch (io.jsonwebtoken.ExpiredJwtException e) {
+            System.out.println("Token expired: " + e.getMessage());
+        } catch (io.jsonwebtoken.MalformedJwtException e) {
+            System.out.println("Malformed token: " + e.getMessage());
+        } catch (io.jsonwebtoken.SignatureException e) {
+            System.out.println("Invalid signature: " + e.getMessage());
+        } catch (io.jsonwebtoken.UnsupportedJwtException e) {
+            System.out.println("Unsupported token: " + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Token is null or empty: " + e.getMessage());
+        }
+        response1.put("message","Token is not valid");
+		return response1;
     }
 }

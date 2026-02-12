@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -25,10 +26,16 @@ public class ApiController {
     public ResponseEntity<Map<String, Object>> loginUser(@RequestBody Map<String, String> loginRequest) {
         String email = loginRequest.get("email");
         String password = loginRequest.get("password");
-
         //return the response
         Map<String, Object> loginResponse = userService.loginUser(email, password);
         return ResponseEntity.ok(loginResponse);
+    }
+    
+    @PostMapping("/users/validate-token")
+    public ResponseEntity<Map<String,Object>> validateToken(@RequestBody Map<String, String> tokenMap) {
+        String token = tokenMap.get("token");
+        Map<String, Object> response = userService.validateToken(token);
+        return ResponseEntity.ok(response);
     }
 
      //Fetch all users
@@ -43,4 +50,6 @@ public class ApiController {
         Optional<Users> user = userService.getUserById(id);
         return user.orElse(null); // Return user or null if not found
     }
+    //{"message":"Token is valid"}
+   
 }
